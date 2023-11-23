@@ -20,7 +20,8 @@ public class Wall implements Structure {
 
     @Override
     public Optional<Block> findBlockByColor(String color) {
-        return blocks.stream().filter(block -> block.getColor().equals(color))
+        return blocks.stream()
+                .filter(block -> block.getColor().equals(color))
                 .findAny();
     }
 
@@ -48,7 +49,8 @@ public class Wall implements Structure {
         }
         if (block instanceof CompositeBlock) {
             allBlocks.add(block);
-            ((CompositeBlock)block).getBlocks().forEach(b -> collectAllBlocks(allBlocks, b));
+            ((CompositeBlock)block).getBlocks()
+                .forEach(b -> collectAllBlocks(allBlocks, b));
         } else {
             allBlocks.add(block);
         }
